@@ -28,5 +28,36 @@
  **/
 
 class PluginMonpluginConfig extends CommonDBTM {
+    /**
+     * GetData function
+     *
+     * @global type $DB
+     * @return void
+     */
+    function getdata(){
+        global $DB;
+        $query = "SELECT * FROM `glpi_itsm_monplugin`";
+        $result = $DB->query($query);
+        $data = array();
+        while ($row = $DB->fetch_assoc($result)){
+            $data[] = $row;
+        }
+        return $data;
+    }
 
+    function setConfiguration($id=null,$valeur){
+        global $DB;
+        
+        if($id != null) {
+            if($valeur != "delStatut"){
+                $query = "UPDATE glpi_plugin_monplugin_config SET statut='$valeur' WHERE id='$id'";
+            } else {
+                $query = "UPDATE glpi_plugin_monplugin_config SET vie='0' WHERE id='$id'";
+            }
+            $DB->query($query) or die($DB->error());
+        } else {
+            $query = "INSERT INTO glpi_plugin_monplugin_config (statut,vie) VALUES ('$valeur','1')";
+            $DB->query($query) or die($DB->error());
+        }
+    }
 }

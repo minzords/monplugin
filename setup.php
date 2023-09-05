@@ -47,6 +47,9 @@ function plugin_version_monplugin(): array {
         'requirements'   => [
             'glpi'   => [
                'min' => '9.5'
+            ],
+            'php'    => [
+                'min' => '8.0'
             ]
          ]
     );
@@ -75,16 +78,22 @@ function plugin_monplugin_check_config(): bool {
 }
 
 /**
- * Init hooks of the plugin
- *
- * @return void
- */
-/**
- * Fonction d'initialisation du plugin
+ * Function called at plugin activation
+ * This function is used to register class
+ * 
  * @global array $PLUGIN_HOOKS
  */
 function plugin_init_monplugin(): void {
     global $PLUGIN_HOOKS;
+    // Declaration des HOOKS
     $PLUGIN_HOOKS['csrf_compliant']['monplugin'] = true;
-    // TODO
+    // $PLUGIN_HOOKS['hook_name']['plugin_name'] = 'function_name';
+    
+    // $PLUGIN_HOOKS['display_login']['monplugin'] = 'myplugin_display_login';
+
+    // if (Session::haveRight("config", UPDATE)) {
+    //      $PLUGIN_HOOKS['config_page']['monplugin'] = 'front/config.form.php';
+    // }
+
+    // $PLUGIN_HOOKS['redefine_menus']['monplugin'] = 'plugin_myplugin_redefine_menus';
 }

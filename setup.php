@@ -89,11 +89,11 @@ function plugin_init_monplugin(): void {
     $PLUGIN_HOOKS['csrf_compliant']['monplugin'] = true;
     // $PLUGIN_HOOKS['hook_name']['plugin_name'] = 'function_name';
     
-    // $PLUGIN_HOOKS['display_login']['monplugin'] = 'myplugin_display_login';
+    $PLUGIN_HOOKS['display_login']['monplugin'] = 'myplugin_display_login';
 
-    // if (Session::haveRight("config", UPDATE)) {
-    //      $PLUGIN_HOOKS['config_page']['monplugin'] = 'front/config.form.php';
-    // }
+    if (Session::haveRight("config", UPDATE)) {
+         $PLUGIN_HOOKS['config_page']['monplugin'] = 'front/config.form.php';
+    }
 
-    // $PLUGIN_HOOKS['redefine_menus']['monplugin'] = 'plugin_myplugin_redefine_menus';
+    $PLUGIN_HOOKS['redefine_menus']['monplugin'] = 'plugin_myplugin_redefine_menus';
 }

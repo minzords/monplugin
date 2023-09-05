@@ -32,12 +32,12 @@
  *
  * @return void
  */
-function myplugin_display_login () {
+function myplugin_display_login (): void {
     die("Hello World!");
     echo "That line will appear on the login page!";
  }
 
- function plugin_myplugin_redefine_menus($menu){
+ function plugin_myplugin_redefine_menus($menu): Array{
     $menu['monplugin'] = [
         'title'     => __('My plugin', 'myplugin'),
         'page'   => '/plugins/monplugin/front/config.form.php',
